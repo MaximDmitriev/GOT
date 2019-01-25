@@ -5,8 +5,8 @@ import RandomChar from '../randomChar/randomChar';
 import ItemList from '../itemList/itemList';
 import CharDetails from '../charDetails/charDetails';
 
-
 const App = () => {
+
     return (
         <> 
             <Container>
