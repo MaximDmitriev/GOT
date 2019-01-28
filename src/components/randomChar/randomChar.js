@@ -54,7 +54,12 @@ export default class RandomChar extends Component {
         const id = -1;
         this.gotService.getCharacter(id)
         .then(this.onCharLoaded)
-        .catch(this.onError);        
+        .catch((res) => {
+            console.log(res.status);
+            console.log(res.Error);
+            this.onError();
+
+        });        
     }
 
     render() {

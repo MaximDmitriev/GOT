@@ -12,11 +12,13 @@ export default class App extends Component {
     }
 
     onToggle = () => {
-        const trig = !this.state.showChar;
-        this.setState({
-            showChar: trig
+        this.setState(({showChar}) => {
+            return {
+                showChar: !showChar
+            }
         });
     }
+
 
     render(){
 
