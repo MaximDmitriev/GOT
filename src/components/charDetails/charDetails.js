@@ -19,7 +19,12 @@ const CharDetailsWrap = styled.div`
 
 export default class CharDetails extends Component {
 
+
+
     render() {
+
+        
+
         return (
             <CharDetailsWrap className="rounded">
                 <h4>John Snow</h4>
