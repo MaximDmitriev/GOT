@@ -45,11 +45,11 @@ export default class gotService {
 
     _transformCharacter(char) {
         return {
-            name: char.name,
-            gender: char.gender,
-            born: char.born,
-            died: char.died,
-            culture: char.culture,
+            name: char.name === "" ? "no data" : char.name,
+            gender: char.gender === "" ? "no data" : char.gender,
+            born: char.born === "" ? "no data" : char.born,
+            died: char.died === "" ? "no data" : char.died,
+            culture: char.culture === "" ? "no data" : char.culture,
             id: char.url.slice(-2)
         }
     }
