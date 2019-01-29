@@ -14,7 +14,7 @@ export default class gotService {
     }
 
     async getAllCharacters() {
-        const res = await this.getResourse("/characters?page=7&pageSize=10");
+        const res = await this.getResourse("/characters?page=11&pageSize=10");
         return res.map(this._transformCharacter);
     }
 
@@ -44,13 +44,14 @@ export default class gotService {
     }
 
     _transformCharacter(char) {
+        const re = "https://www.anapioficeandfire.com/api/characters/";
         return {
             name: char.name === "" ? "no data" : char.name,
             gender: char.gender === "" ? "no data" : char.gender,
             born: char.born === "" ? "no data" : char.born,
             died: char.died === "" ? "no data" : char.died,
             culture: char.culture === "" ? "no data" : char.culture,
-            id: char.url.slice(-2)
+            id: char.url.replace(re, "")
         }
     }
 
