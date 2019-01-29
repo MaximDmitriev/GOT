@@ -6,9 +6,12 @@ import img408 from "./img408.jpg";
 import img410 from "./img410.jpg";
 
 const ErrMsg = styled.div`
-    width: 100%
+    max-width: 390px;
+    margin:0 auto;
+    background-color: #fff;
     h2{
         font-size: 18px;
+        padding: 5px;
     }
     img{
         width: 100%;
@@ -47,7 +50,7 @@ const ErrorMessage = ({error}) => {
         }
 
     return (
-        <ErrMsg>
+        <ErrMsg className="rounded">
             <h2>Error! {msg}</h2>
             <img src={img} alt={`error ${err}`}></img>
         </ErrMsg>

@@ -1,30 +1,42 @@
 import React, {Component} from 'react';
 import {Col, Row, Container, Button} from 'reactstrap';
+
 import Header from '../header/header';
 import RandomChar from '../randomChar/randomChar';
-import ItemList from '../itemList/itemList';
-import CharDetails from '../charDetails/charDetails';
+import ErrorMessage from "../errorMessage/errorMessage";
+import CharacterPage from "../characterPage/characterPage";
 
 export default class App extends Component {
 
     state = {
-        showChar: false
+        showChar: false,
+        error: false
+    }
+
+    componentDidCatch() {
+        this.setState({
+            error: true
+        })
     }
 
     onToggle = () => {
         this.setState(({showChar}) => {
             return {
-                showChar: !showChar
+                showChar: !showChar,
             }
         });
     }
 
 
-    render(){
+    render() {
 
         const {showChar} = this.state;
 
         const randomChar = showChar ? <RandomChar/> : null;
+
+        if (this.state.error) {
+            return <ErrorMessage error={"409"}/>
+        }
 
         return (
             <> 
@@ -38,19 +50,14 @@ export default class App extends Component {
                         </Col>
                     </Row>
                     <Row>
-                        <Col md='6'>
-                            <ItemList />
-                        </Col>
-                        <Col md='6'>
-                            <CharDetails />
-                        </Col>
+                        <Button 
+                            color="secondary"
+                            className="float-left"
+                            style={{ margin: "15px" }}
+                            onClick={this.onToggle}
+                            >{showChar ?  "Hide character" : "Show character"}</Button>
                     </Row>
-                <Button 
-                    color="outline-secondary"
-                    className="float-left"
-                    style={{ marginBottom: "15px" }}
-                    onClick={this.onToggle}
-                    >{showChar ?  "Hide character" : "Show character"}</Button>
+                    <CharacterPage />
                 </Container>
             </>
         );
