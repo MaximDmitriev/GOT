@@ -20,7 +20,7 @@ export default class gotService {
 
     getCharacter = async (id) => {
         const char = await this.getResourse(`/characters/${id}`);
-        return this._transformCharacter(char);
+        return this._replaceEmpty(this._transformCharacter(char));
     }
 
     getAllBooks = async () => {
@@ -30,7 +30,7 @@ export default class gotService {
 
     getBook = async (id) => {
         const book = await this.getResourse(`/books/${id}`);
-        return this._transformBook(book);
+        return this._replaceEmpty(this._transformBook(book));
     }
 
     getAllHouses = async () => {
@@ -40,30 +40,37 @@ export default class gotService {
 
     getHouse = async (id) => {
         const house = await this.getResourse(`/houses/${id}`);
-        return this._transformHouse(house);
+        return this._replaceEmpty(this._transformHouse(house));
+    }
+
+    _replaceEmpty(obj) {
+        for (let i in obj) {
+            if (obj[i] === "" || obj[i][0] === "") obj[i] = "no data";
+        }
+        return obj;
     }
 
     _transformCharacter(char) {
         const re = "https://www.anapioficeandfire.com/api/characters/";
-        return {
-            name: char.name === "" ? "no data" : char.name,
-            gender: char.gender === "" ? "no data" : char.gender,
-            born: char.born === "" ? "no data" : char.born,
-            died: char.died === "" ? "no data" : char.died,
-            culture: char.culture === "" ? "no data" : char.culture,
-            id: char.url.replace(re, "")
-        }
+        return  {
+                name: char.name,
+                gender: char.gender,
+                born: char.born,
+                died: char.died,
+                culture: char.culture,
+                id: char.url.replace(re, "")
+            }
     }
 
     _transformHouse(house) {
         const re = "https://www.anapioficeandfire.com/api/houses/";
         return {
-            name: house.name === "" ? "no data" : house.name,
-            region: house.region === "" ? "no data" : house.region,
-            words: house.words === "" ? "no data" : house.words,
-            titles: house.titles[0] === "" ? "no data" : house.titles,
-            overlord: house.overlord === "" ? "no data" : house.overlord.replace(re, ""),
-            ancestralWeapons: house.ancestralWeapons[0] === "" ? "no data" : house.ancestralWeapons,
+            name: house.name,
+            region: house.region,
+            words: house.words,
+            titles: house.titles,
+            overlord: house.overlord.replace(re, ""),
+            ancestralWeapons: house.ancestralWeapons,
             id: house.url.replace(re, "")
         }
     }
@@ -71,10 +78,10 @@ export default class gotService {
     _transformBook(book) {
         const re = "https://www.anapioficeandfire.com/api/books/";
         return {
-            name: book.name === "" ? "no data" : book.name,
-            numberOfPages: book.numberOfPages === "" ? "no data" : book.numberOfPages,
-            publisher: book.publisher === "" ? "no data" : book.publisher,
-            released: book.released === "" ? "no data" : book.released,
+            name: book.name,
+            numberOfPages: book.numberOfPages,
+            publisher: book.publisher,
+            released: book.released,
             id: book.url.replace(re, "")
         }
     }
