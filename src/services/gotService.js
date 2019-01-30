@@ -62,7 +62,7 @@ export default class gotService {
             region: house.region === "" ? "no data" : house.region,
             words: house.words === "" ? "no data" : house.words,
             titles: house.titles[0] === "" ? "no data" : house.titles,
-            overlord: house.overlord === "" ? "no data" : house.overlord,
+            overlord: house.overlord === "" ? "no data" : house.overlord.replace(re, ""),
             ancestralWeapons: house.ancestralWeapons[0] === "" ? "no data" : house.ancestralWeapons,
             id: house.url.replace(re, "")
         }
