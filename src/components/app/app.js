@@ -4,9 +4,14 @@ import {Col, Row, Container, Button} from 'reactstrap';
 import Header from '../header/header';
 import RandomChar from '../randomChar/randomChar';
 import ErrorMessage from "../errorMessage/errorMessage";
-import CharacterPage from "../characterPage/characterPage";
+import CharacterPage from "../pages/characterPage/characterPage";
+import BooksPage from "../pages/booksPage/booksPage";
+import HousesPage from "../pages/housesPage/housesPage";
+import gotService from "../../services/gotService";
 
 export default class App extends Component {
+
+    gotService = new gotService();
 
     state = {
         showChar: false,
@@ -58,6 +63,9 @@ export default class App extends Component {
                             >{showChar ?  "Hide character" : "Show character"}</Button>
                     </Row>
                     <CharacterPage />
+                    <BooksPage />
+                    <HousesPage />
+
                 </Container>
             </>
         );
