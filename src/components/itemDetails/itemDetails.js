@@ -9,8 +9,9 @@ import ErrorMessage from "../errorMessage/errorMessage";
 const ItemDetailsWrap = styled.div`
     background-color: #fff;
     padding: 25px 25px 15px 25px;
-    margin-bottom: 40px;
+    margin: 0 auto;
     min-height: 272px;
+    max-width: 540px;
     .char-details h4 {
         margin-bottom: 20px;
         text-align: center;
@@ -19,6 +20,9 @@ const ItemDetailsWrap = styled.div`
         color: #fff;
         text-align: center;
         font-size: 26px;
+    }
+    .label{
+        text-align: right;
     }
 `;
 
@@ -33,7 +37,7 @@ const Field = ({item, field, label}) => {
     return(
         <ListGroupItem className="d-flex justify-content-between">
             <span className="term">{label}</span>
-            <span>{item[field]}</span>
+            <span className="label">{item[field]}</span>
         </ListGroupItem>
     )
 }

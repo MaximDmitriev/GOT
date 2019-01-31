@@ -68,7 +68,7 @@ export default class gotService {
             name: house.name,
             region: house.region,
             words: house.words,
-            titles: house.titles,
+            titles: house.titles.join(", "),
             overlord: house.overlord.replace(re, ""),
             ancestralWeapons: house.ancestralWeapons,
             id: house.url.replace(re, "")
