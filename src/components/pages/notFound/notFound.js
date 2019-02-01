@@ -24,9 +24,11 @@ const NotFound = () => {
         <Wrapper className="rounded">
             <h1>This Page Not Found</h1>
             <img src={img408} alt={"Link not found"}></img>
-            <Button color="secondary" size="lg">
-                <Link to="/">Back to Home page</Link>
-            </Button>
+            <Link to="/">
+                <Button color="secondary" size="lg">
+                    Back to Home page
+                </Button>
+            </Link>
         </Wrapper>
         
     )

@@ -52,7 +52,7 @@ export default class HousesPage extends Component {
                 <Field field="words" label="Words"/>
                 <Field field="titles" label="Titles"/>
                 <Field field="overlord" label="Overlord"/>
-                <Field field="ancestralWeapons" label="AncestralWeapons"/>
+                <Field field="ancestralWeapons" label="Ancestral Weapons"/>
             </ItemDetails>
         )
 

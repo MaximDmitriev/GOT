@@ -21,6 +21,9 @@ const AppWrap = styled.div`
     background-size: cover;
     font-size: 16px;
     height: 100vh;
+    button{
+        box-shadow: none !important;
+    }
 `
 
 export default class App extends Component {
@@ -92,7 +95,7 @@ export default class App extends Component {
                                         return <NotFound />
                                     }
                                     return(
-                                        <BooksItem booksId={id}/>
+                                        <BooksItem booksId={id} />
                                     )
                                 }
                             }/>

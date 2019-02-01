@@ -14,6 +14,7 @@ const BtnWrp = styled.div`
     justify-content: space-between;
     button{
         min-width: 95px;
+        box-shadow: none !important;
     }
 `
 
@@ -47,22 +48,26 @@ export default class BooksItem extends Component {
                     itemId={this.props.booksId}
                     getItem={this.gotService.getBook}>
                     <Field field="publisher" label="Publisher"/>
-                    <Field field="numberOfPages" label="NumberOfPages"/>
+                    <Field field="numberOfPages" label="Number of pages"/>
                     <Field field="released" label="Released"/>
                 </ItemDetails>
                 
                 <BtnWrp>
-                    <Button color="secondary">
-                        <Link to={`${this.onPrev()}`}>{this.props.booksId < 2 ? "No books" : "Prev"}</Link>    
-                    </Button>
-                    <Button color="secondary">
-                        <Link to="/books/">
+                    <Link to={`${this.onPrev()}`}>
+                        <Button color="secondary">
+                            {this.props.booksId < 2 ? "No books" : "Prev"}
+                        </Button>
+                    </Link>    
+                    <Link to="/books/">
+                        <Button color="secondary">
                             Back to List
-                        </Link>
-                    </Button>
-                    <Button color="secondary">
-                        <Link to={`${this.onNext()}`}>{this.props.booksId > 11 ? "No books" : "Next"}</Link>
-                    </Button>
+                        </Button>
+                    </Link>
+                    <Link to={`${this.onNext()}`}>
+                        <Button color="secondary">
+                            {this.props.booksId > 11 ? "No books" : "Next"}
+                        </Button>
+                    </Link>
                 </BtnWrp>
             </>
         )
