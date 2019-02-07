@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
 import {Col, Row} from 'reactstrap';
-import {withRouter} from "react-router-dom";
-
 
 import ItemList from '../../itemList/itemList';
 import ErrorMessage from "../../errorMessage/errorMessage";
 import gotService from "../../../services/gotService";
 
-class BooksPage extends Component {
+export default class BooksPage extends Component {
 
     gotService = new gotService();
 
@@ -20,14 +18,6 @@ class BooksPage extends Component {
             error: true
         })
     }
-
-
-    // onItemSelected = (id) => {
-    //     this.setState({
-    //         selectedBook: id
-    //     })
-    // }
-
 
     render() {
 
@@ -52,5 +42,3 @@ class BooksPage extends Component {
         )
     }
 }
-
-export default withRouter(BooksPage);
