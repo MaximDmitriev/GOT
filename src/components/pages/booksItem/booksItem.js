@@ -21,10 +21,23 @@ const BtnWrp = styled.div`
 export default class BooksItem extends Component {
     gotService = new gotService();
 
+    state = {
+        numbers: 11
+    }
+
+    check = () => {
+        this.gotService.getAllBooks()
+        .then((res) => {
+            this.setState({
+                numbers: +res[0].id + +res.length
+            }) 
+        });
+    }
+
     onNext = () => {
         let count = parseInt(this.props.booksId) + 1;
 
-        if (count > 11) count = 12;
+        if (count > this.state.numbers) count = 12;
 
         const url = "/books/" + count.toString();
         return url;
@@ -64,8 +77,8 @@ export default class BooksItem extends Component {
                         </Button>
                     </Link>
                     <Link to={`${this.onNext()}`}>
-                        <Button color="secondary">
-                            {this.props.booksId > 11 ? "No books" : "Next"}
+                        <Button color="secondary" onClick={this.check}>
+                            {this.props.booksId > this.state.numbers ? "No books" : "Next"}
                         </Button>
                     </Link>
                 </BtnWrp>
